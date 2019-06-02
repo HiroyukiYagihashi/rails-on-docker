@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: rails-on-docker
+spec:
+  selector:
+    matchLabels:
+      app: rails-on-docker
+  template:
+    metadata:
+      labels:
+        app: rails-on-docker
+    spec:
+      containers:
+      - name: rails-on-docker
+        image: hiroyukiyagihashi/rails-on-docker:v1
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+        ports:
+        - containerPort: 80
